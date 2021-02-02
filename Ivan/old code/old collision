@@ -1,0 +1,194 @@
+//IN PLAYER CLASS
+	public void tick() {
+		//Arrays.fill(speed, speedInUse[0]);
+		
+		
+		
+		//collision();
+//		boolean touchedX = false, touchedY = false;
+//		for(int i = 0; i < wallTouch.length; ++i) {
+//			
+//			if(wallTouch[i]) {
+//				if(i == 1 || i == 3) touchedX = true;
+//				else touchedY = true;
+//				
+//				switch(i) {
+//				case 1: if(x + speedX >= x) x += speedX;break;
+//				case 3: if(x + speedX <= x) x += speedX;break;
+//				case 4: if(y + speedY > y) y += speedY;break;
+//				case 2: if(y + speedY <= y) y += speedY;break;
+//				}
+//			}
+//		}
+//		if(!touchedX)
+//			x += speedX;
+		
+//		if(!touchedY)
+//			y += speedY;
+		}
+
+	private void collision() {
+		for(int i = 0; i < handler.object.size(); ++i) {
+			
+			GameObject tempObject = handler.object.get(i);
+			
+			if(tempObject.getId() == ID.Player) {
+				
+			}
+			
+			if(tempObject.getId() == ID.Wall) {
+				//final int left = 0, right = 20, top = 20, bot = 0;
+				//if(inter(tempObject, 0)) {
+				final float val = 1;
+				if(getBounds().intersects(tempObject.x - val, tempObject.y - val, tempObject.width + val, tempObject.height + val)) {
+					
+					if(speedX > 0) {
+						x -= 10;
+						//y += speedY;
+//						y += speedY;
+//						Arrays.fill(this.wallTouch, false);
+						wallTouch[3] = true;
+						
+//						x -= speedX;
+//						int tx = (int)(x + speedX) / tempObject.width;
+//						x = tempObject.x - width  - 1;
+					}else if(speedX < 0) {
+						//y += speedY;
+						wallTouch[1] = true;
+						//x = tempObject.x + tempObject.width + 10;
+					}
+					if(speedY > 0) {
+						//x += speedX;
+						wallTouch[2] = true;
+					}else if(speedY < 0) {
+						wallTouch[4] = true;
+					}
+					/*int outcode = tempObject.getBounds().outcode(x, y);
+					
+					//outcode = tempObject.getBounds().outcode(x, y);
+					System.out.println(outcode);
+//					if(outcode == 3) {
+//						
+//						this.wallTouch[2] = true;
+//						this.wallTouch[3] = true;
+//						return;
+//					}
+					if((outcode & Rectangle.OUT_RIGHT) == Rectangle.OUT_RIGHT) {
+						System.out.println("GG");
+						this.wallTouch[1] = true;
+						
+					} else if((outcode & Rectangle.OUT_BOTTOM) == Rectangle.OUT_BOTTOM) {
+						System.out.println("OOO");
+						this.wallTouch[4] = true;
+						
+					} else if((outcode & Rectangle.OUT_TOP) == Rectangle.OUT_TOP) {
+						
+						this.wallTouch[2] = true;
+						
+					}
+					if((outcode & Rectangle.OUT_LEFT) == Rectangle.OUT_LEFT) {
+						System.out.println("KK");
+						this.wallTouch[3] = true;
+						
+					}
+					*/
+				}else {
+					
+					this.gravity = this.gravityInUse;
+					x += speedX;
+					y += speedY;
+				}
+			}
+				
+			
+			
+			
+		}
+	}
+	public boolean inter(GameObject o, int val) {
+		
+		if(getBounds().intersects(o.getBounds())) return true;
+		float x = o.x, y = o.y, w = o.width, h = o.height;
+		if(getBounds().intersects(x+val, y+val, w+val, h+val)) return true;
+		if(getBounds().intersects(x-val, y-val, w-val, h-val)) return true;
+		return false;
+	}
+//IN WALL CLASS
+	public void tick() {
+
+		//System.out.println(getBounds());
+		collision();
+		//new Wall(80, 500, ID.Wall, 50, 30, Color.green, -1, handler);
+		//handler.addObject(wall);
+		//x += speedX;
+		//y += speedY;
+		
+		//if(y <= 0 || y >= Ivan.HEIGHT - 32) speedY *= -1;
+		//if(x <= 0 || x >= Ivan.WIDTH - 16) speedX *= -1;
+		
+		//handler.addObject(this);
+		//new Enemy(x, y,ID.Enemy, handler, color, 16, 16, 0.02f, handler));
+	}
+
+	public void collision() {
+		
+		for(int i = 0; i < handler.object.size(); ++i) {
+			
+			GameObject tempObject = handler.object.get(i);
+			
+			/*if(tempObject.getId() == ID.Player) {
+				if(getBounds().intersects(tempObject.getBounds())) {
+					if(tempObject.x >= height - y - tempObject.height){
+						System.out.println("XX");
+						if(tempObject.x <= width) tempObject.wallTouch[1] = true;
+						else tempObject.wallTouch[3] = true;
+					}
+//					else {
+//						tempObject.wallTouch[3] = false;
+//						if(tempObject.x <= width) {
+//							tempObject.wallTouch[1] = true;
+//					}
+//						
+//					}
+					
+					if(tempObject.y >= width - x - tempObject.width){
+						System.out.println("YY");
+						Arrays.fill(tempObject.wallTouch, false);
+						tempObject.wallTouch[4] = true;
+					}
+					
+//					if(tempObject.y <= width - x - tempObject.width){
+//						System.out.println("MA");
+//						tempObject.wallTouch[2] = true;
+//						tempObject.gravityInUse = 0;
+//					}
+					
+				}else Arrays.fill(tempObject.wallTouch, false);
+			}*/
+					//tempObject.x = solidX(tempObject.x, tempObject.height, y, height);
+					//tempObject.y = solidY(tempObject.y, tempObject.width, x, width);
+					//tempObject.speed[1] = 0;
+					//tempObject.x = solid(this.width - 3, this.x, this.width);
+					//tempObject.y = solid(tempObject.getBounds().y, this.getBounds().height, this.getBounds().y);
+					//tempObject.wallTouch[3] = true;
+					//System.out.println("height " + this.height + "  this.y " + this.y);
+			//else tempObject.speed[1] = tempObject.speedInUse[1];
+			}
+		}
+
+	
+	private static float solidY(float y, float S, float wallY, float wallS) {
+		if(y >= wallS - wallY - S) {
+			System.out.println("wallY");
+			return y - 10;
+		}
+		return y;
+	}
+	private static float solidX(float y, float S, float wallY, float wallS) {
+		if(y <= wallS - wallY - S) {
+			System.out.print("wallX");
+			return y - wallY - S;
+		}
+		return y;
+	}
+	
